@@ -16,8 +16,28 @@ import Cart from "@/pages/Cart";
 import ProductDetail from "@/pages/ProductDetail";
 import Menu from "@/pages/Menu";
 import Blog from "@/pages/Blog";
+import BlogPost from "@/pages/BlogPost";
 import BookService from "@/pages/BookService";
 import NotFound from "@/pages/NotFound";
+import Wishlist from "@/pages/Wishlist";
+import Messages from "@/pages/Messages";
+import Contact from "@/pages/Contact";
+import FAQ from "@/pages/FAQ";
+import About from "@/pages/About";
+import ContinueShopping from "@/pages/ContinueShopping";
+
+// Pages de produits par catégorie
+import CosmeticsPage from "@/pages/products/Cosmetics";
+import WigsPage from "@/pages/products/Wigs";
+import SkincareProducts from "@/pages/products/Skincare";
+import HaircareProducts from "@/pages/products/Haircare";
+
+// Pages de services
+import HairstylingPage from "@/pages/services/Hairstyling";
+import MakeupPage from "@/pages/services/Makeup";
+
+// Pages de compte utilisateur
+import UserProfile from "@/pages/account/index";
 
 // Pages d'authentification
 import Login from "@/pages/auth/Login";
@@ -75,11 +95,43 @@ const App = () => (
               <Route path="products/:id" element={<ProductDetail />} />
               <Route path="menu" element={<Menu />} />
               <Route path="blog" element={<Blog />} />
+              <Route path="blog/:slug" element={<BlogPost />} />
+              <Route path="contact" element={<Contact />} />
+              <Route path="faq" element={<FAQ />} />
+              <Route path="about" element={<About />} />
+              <Route path="continue-shopping" element={<ContinueShopping />} />
+              
+              {/* Pages de catégories de produits */}
+              <Route path="products/cosmetics" element={<CosmeticsPage />} />
+              <Route path="products/wigs" element={<WigsPage />} />
+              <Route path="products/skincare" element={<SkincareProducts />} />
+              <Route path="products/haircare" element={<HaircareProducts />} />
+              
+              {/* Pages de services */}
               <Route path="services/book" element={<BookService />} />
+              <Route path="services/hairstyling" element={<HairstylingPage />} />
+              <Route path="services/makeup" element={<MakeupPage />} />
               
               {/* Pages d'authentification */}
               <Route path="auth/login" element={<Login />} />
               <Route path="auth/register" element={<Register />} />
+              
+              {/* Pages protégées nécessitant une connexion */}
+              <Route path="account" element={
+                <ProtectedRoute>
+                  <UserProfile />
+                </ProtectedRoute>
+              } />
+              <Route path="wishlist" element={
+                <ProtectedRoute>
+                  <Wishlist />
+                </ProtectedRoute>
+              } />
+              <Route path="messages" element={
+                <ProtectedRoute>
+                  <Messages />
+                </ProtectedRoute>
+              } />
               
               {/* Pages d'administration protégées */}
               <Route path="admin/products" element={
