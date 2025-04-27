@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ProductGrid } from '@/components/Product/ProductGrid';
+import ProductGrid from '@/components/Product/ProductGrid';
 import { mockProducts } from '@/data/mock';
 
 const CosmeticsPage = () => {

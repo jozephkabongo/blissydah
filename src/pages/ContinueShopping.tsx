@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ProductGrid } from '@/components/Product/ProductGrid';
+import ProductGrid from '@/components/Product/ProductGrid';
 import { Button } from '@/components/ui/button';
 import { mockProducts } from '@/data/mock';
 import { ShoppingBag } from 'lucide-react';

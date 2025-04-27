@@ -24,3 +24,5 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products, title }) => {
 };
 
 export default ProductGrid;
+// Pour assurer la compatibilité avec les deux façons d'importer
+export { ProductGrid };

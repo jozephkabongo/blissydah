@@ -8,6 +8,7 @@ export interface User {
   name: string;
   role: 'customer' | 'admin' | 'super-admin';
   createdAt: string;
+  phone?: string; // Ajout de la propriété phone comme optionnelle
 }
 
 interface AuthContextType {
