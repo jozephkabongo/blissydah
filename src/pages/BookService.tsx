@@ -1,10 +1,8 @@
 
 import React, { useState } from 'react';
-import { useToast } from '@/components/ui/use-toast';
-import { mockServices } from '@/data/mock';
-import ServiceCard from '@/components/Service/ServiceCard';
-import ServiceBookingForm from '@/components/Service/ServiceBookingForm';
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { useToast } from '@/hooks/use-toast';
+import ServiceList from '@/components/Service/ServiceList';
+import ServiceBookingDialog from '@/components/Service/ServiceBookingDialog';
 
 const BookService = () => {
   const [selectedService, setSelectedService] = useState<string | null>(null);
@@ -28,29 +26,17 @@ const BookService = () => {
           Découvrez nos services de beauté professionnels et réservez votre rendez-vous.
         </p>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {mockServices.map(service => (
-            <ServiceCard
-              key={service.id}
-              {...service}
-              onClick={() => setSelectedService(service.id)}
-            />
-          ))}
-        </div>
+        <ServiceList onServiceSelect={setSelectedService} />
         
-        <Dialog open={!!selectedService} onOpenChange={() => setSelectedService(null)}>
-          <DialogContent className="sm:max-w-[500px]">
-            {selectedService && (
-              <ServiceBookingForm
-                service={mockServices.find(s => s.id === selectedService)!}
-                onSubmit={handleBooking}
-              />
-            )}
-          </DialogContent>
-        </Dialog>
+        <ServiceBookingDialog
+          serviceId={selectedService}
+          onClose={() => setSelectedService(null)}
+          onSubmit={handleBooking}
+        />
       </div>
     </div>
   );
 };
 
 export default BookService;
+
