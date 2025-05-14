@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Heart, MessageSquare, Share2 } from 'lucide-react';
@@ -66,11 +65,12 @@ interface Post {
   likes: number;
   comments: number;
   tags: string[];
+  slug?: string; // Ajout du champ slug
 }
 
 const FeaturedPost: React.FC<{ post: Post }> = ({ post }) => {
   return (
-    <Link to={`/blog/${post.id}`} className="group block h-full">
+    <Link to={`/blog/${post.slug || post.id}`} className="group block h-full">
       <div className="relative h-80 rounded-lg overflow-hidden">
         <img
           src={post.image}
@@ -93,7 +93,7 @@ const FeaturedPost: React.FC<{ post: Post }> = ({ post }) => {
 
 const SmallPost: React.FC<{ post: Post }> = ({ post }) => {
   return (
-    <Link to={`/blog/${post.id}`} className="group block h-full">
+    <Link to={`/blog/${post.slug || post.id}`} className="group block h-full">
       <div className="relative h-40 rounded-lg overflow-hidden">
         <img
           src={post.image}
@@ -116,7 +116,7 @@ const SmallPost: React.FC<{ post: Post }> = ({ post }) => {
 const BlogPostCard: React.FC<{ post: Post }> = ({ post }) => {
   return (
     <div className="bg-white rounded-lg shadow-sm overflow-hidden">
-      <Link to={`/blog/${post.id}`} className="block group">
+      <Link to={`/blog/${post.slug || post.id}`} className="block group">
         <div className="relative h-48 overflow-hidden">
           <img
             src={post.image}
@@ -126,7 +126,7 @@ const BlogPostCard: React.FC<{ post: Post }> = ({ post }) => {
         </div>
       </Link>
       <div className="p-5">
-        <Link to={`/blog/${post.id}`} className="block group">
+        <Link to={`/blog/${post.slug || post.id}`} className="block group">
           <h3 className="text-xl font-medium mb-2 group-hover:text-primary-foreground transition-colors">{post.title}</h3>
         </Link>
         <p className="text-gray-600 line-clamp-2 mb-4">{post.excerpt}</p>
