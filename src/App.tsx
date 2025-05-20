@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -12,7 +13,7 @@ import MainLayout from '@/components/Layout/MainLayout';
 // Pages principales
 import Index from "@/pages/Index";
 import Cart from "@/pages/Cart";
-import Products from "@/pages/Products"; // Ajout de la nouvelle page
+import Products from "@/pages/Products"; 
 import ProductDetail from "@/pages/ProductDetail";
 import Menu from "@/pages/Menu";
 import Blog from "@/pages/Blog";
@@ -38,6 +39,7 @@ import MakeupPage from "@/pages/services/Makeup";
 
 // Pages de compte utilisateur
 import UserProfile from "@/pages/account/index";
+import UserOrders from "@/pages/account/orders/index";
 
 // Pages d'authentification
 import Login from "@/pages/auth/Login";
@@ -92,7 +94,7 @@ const App = () => (
               {/* Pages publiques */}
               <Route index element={<Index />} />
               <Route path="cart" element={<Cart />} />
-              <Route path="products" element={<Products />} /> {/* Ajout de la nouvelle route */}
+              <Route path="products" element={<Products />} />
               <Route path="products/:id" element={<ProductDetail />} />
               <Route path="menu" element={<Menu />} />
               <Route path="blog" element={<Blog />} />
@@ -121,6 +123,11 @@ const App = () => (
               <Route path="account" element={
                 <ProtectedRoute>
                   <UserProfile />
+                </ProtectedRoute>
+              } />
+              <Route path="account/orders" element={
+                <ProtectedRoute>
+                  <UserOrders />
                 </ProtectedRoute>
               } />
               <Route path="wishlist" element={

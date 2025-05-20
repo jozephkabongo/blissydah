@@ -6,6 +6,27 @@ import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { User, Heart, MessageCircle, Package } from 'lucide-react';
 
+interface ProfileNavLinkProps {
+  to: string;
+  icon: React.ReactNode;
+  label: string;
+  active?: boolean;
+}
+
+export const ProfileNavLink: React.FC<ProfileNavLinkProps> = ({ to, icon, label, active }) => {
+  return (
+    <Link 
+      to={to}
+      className={`flex items-center p-2 rounded-md ${active 
+        ? 'bg-primary text-primary-foreground' 
+        : 'hover:bg-gray-100'}`}
+    >
+      <span className="mr-3">{icon}</span>
+      {label}
+    </Link>
+  );
+};
+
 const UserProfile = () => {
   const { user, signOut } = useAuth();
 
@@ -107,27 +128,6 @@ const UserProfile = () => {
         </div>
       </div>
     </div>
-  );
-};
-
-interface ProfileNavLinkProps {
-  to: string;
-  icon: React.ReactNode;
-  label: string;
-  active?: boolean;
-}
-
-const ProfileNavLink: React.FC<ProfileNavLinkProps> = ({ to, icon, label, active }) => {
-  return (
-    <Link 
-      to={to}
-      className={`flex items-center p-2 rounded-md ${active 
-        ? 'bg-primary text-primary-foreground' 
-        : 'hover:bg-gray-100'}`}
-    >
-      <span className="mr-3">{icon}</span>
-      {label}
-    </Link>
   );
 };
 
